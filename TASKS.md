@@ -21,7 +21,12 @@
 
 | Task | Task Doc | Feature Doc | Test Report | Status |
 |------|----------|-------------|-------------|--------|
-| Next.js Todo List App | [task](docs/task/nextjs-todo-app.md) | [feature](docs/features/todo-list-app.md) | [test](docs/testing/nextjs-todo-app.md) | Jan 30 |
+
+## Ready to Ship
+
+| Task | Branch | PR | Merged | Task Doc |
+|------|--------|-----|--------|----------|
+| Next.js Todo List App | feature/nextjs-todo-app | [#1](https://github.com/eljun/demo-project/pull/1) | No | [task](docs/task/nextjs-todo-app.md) |
 
 ## Completed
 
