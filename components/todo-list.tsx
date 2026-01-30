@@ -7,9 +7,19 @@ interface TodoListProps {
   todos: Todo[];
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
+  isSelectionMode?: boolean;
+  selectedIds?: Set<string>;
+  onSelect?: (id: string) => void;
 }
 
-export function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
+export function TodoList({
+  todos,
+  onToggle,
+  onDelete,
+  isSelectionMode,
+  selectedIds,
+  onSelect,
+}: TodoListProps) {
   if (todos.length === 0) {
     return (
       <div className="text-center py-12 text-muted-foreground">
@@ -26,6 +36,9 @@ export function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
           todo={todo}
           onToggle={onToggle}
           onDelete={onDelete}
+          isSelectionMode={isSelectionMode}
+          isSelected={selectedIds?.has(todo.id)}
+          onSelect={onSelect}
         />
       ))}
     </div>

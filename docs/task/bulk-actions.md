@@ -1,12 +1,14 @@
 # Bulk Actions for Todos
 
-> **Status:** PLANNED
+> **Status:** READY TO SHIP
+> **Completed:** Jan 30, 2026
 > **Priority:** MEDIUM
 > **Type:** feature
 > **Version Impact:** minor
 > **Created:** Jan 30, 2026
 > **Platform:** Web
 > **Automation:** manual
+> **PR:** [#2](https://github.com/eljun/demo-project/pull/2)
 
 ## Overview
 
@@ -15,15 +17,15 @@ Add bulk action capabilities to the todo list, allowing users to select multiple
 ## Requirements
 
 ### Must Have
-- [ ] Toggle button to enter/exit selection mode
-- [ ] Selection checkbox on each todo item (when in selection mode)
-- [ ] Visual count of selected items
-- [ ] "Select All" / "Deselect All" toggle
-- [ ] Bulk delete action for selected todos
-- [ ] Bulk "Mark as Complete" action
-- [ ] Bulk "Mark as Incomplete" action
-- [ ] Exit selection mode after action completes
-- [ ] Disable actions when no items selected
+- [x] Toggle button to enter/exit selection mode
+- [x] Selection checkbox on each todo item (when in selection mode)
+- [x] Visual count of selected items
+- [x] "Select All" / "Deselect All" toggle
+- [x] Bulk delete action for selected todos
+- [x] Bulk "Mark as Complete" action
+- [x] Bulk "Mark as Incomplete" action
+- [x] Exit selection mode after action completes
+- [x] Disable actions when no items selected
 
 ### Nice to Have
 - [ ] Keyboard shortcut to toggle selection mode (e.g., Ctrl+A for select all)

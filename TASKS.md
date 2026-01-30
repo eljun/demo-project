@@ -4,7 +4,6 @@
 
 | Task | Priority | Task Doc | Created |
 |------|----------|----------|---------|
-| Bulk Actions | MEDIUM | [bulk-actions.md](docs/task/bulk-actions.md) | Jan 30 |
 | Responsive Design | MEDIUM | [responsive-design.md](docs/task/responsive-design.md) | Jan 30 |
 
 ## In Progress
@@ -27,6 +26,12 @@
 | Task | Branch | PR | Merged | Task Doc |
 |------|--------|-----|--------|----------|
 | Next.js Todo List App | feature/nextjs-todo-app | [#1](https://github.com/eljun/demo-project/pull/1) | No | [task](docs/task/nextjs-todo-app.md) |
+
+## Ready to Ship
+
+| Task | Branch | PR | Merged | Task Doc |
+|------|--------|----|----|----------|
+| Bulk Actions | feature/bulk-actions | [#2](https://github.com/eljun/demo-project/pull/2) | No | [bulk-actions.md](docs/task/bulk-actions.md) |
 
 ## Completed
 

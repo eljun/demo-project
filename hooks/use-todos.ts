@@ -45,11 +45,34 @@ export function useTodos() {
     )
   }
 
+  const deleteMany = (ids: string[]) => {
+    setTodos((prev) => prev.filter((todo) => !ids.includes(todo.id)))
+  }
+
+  const completeMany = (ids: string[]) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        ids.includes(todo.id) ? { ...todo, completed: true } : todo
+      )
+    )
+  }
+
+  const incompleteMany = (ids: string[]) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        ids.includes(todo.id) ? { ...todo, completed: false } : todo
+      )
+    )
+  }
+
   return {
     todos,
     isLoaded,
     addTodo,
     deleteTodo,
     toggleTodo,
+    deleteMany,
+    completeMany,
+    incompleteMany,
   }
 }
