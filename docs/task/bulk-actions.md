@@ -1,6 +1,6 @@
 # Bulk Actions for Todos
 
-> **Status:** TESTING
+> **Status:** READY TO SHIP
 > **Completed:** Jan 30, 2026
 > **Priority:** MEDIUM
 > **Type:** feature
@@ -8,6 +8,7 @@
 > **Created:** Jan 30, 2026
 > **Platform:** Web
 > **Automation:** manual
+> **PR:** [#2](https://github.com/eljun/demo-project/pull/2)
 
 ## Overview
 

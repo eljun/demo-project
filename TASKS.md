@@ -20,8 +20,13 @@
 
 | Task | Task Doc | Feature Doc | Test Report | Status |
 |------|----------|-------------|-------------|--------|
-| Bulk Actions | [bulk-actions.md](docs/task/bulk-actions.md) | [feature](docs/features/bulk-actions.md) | [report](docs/testing/bulk-actions.md) | Jan 30 |
 | Next.js Todo List App | [task](docs/task/nextjs-todo-app.md) | [feature](docs/features/todo-list-app.md) | [test](docs/testing/nextjs-todo-app.md) | Jan 30 |
+
+## Ready to Ship
+
+| Task | Branch | PR | Merged | Task Doc |
+|------|--------|----|----|----------|
+| Bulk Actions | feature/bulk-actions | [#2](https://github.com/eljun/demo-project/pull/2) | No | [bulk-actions.md](docs/task/bulk-actions.md) |
 
 ## Completed
 
