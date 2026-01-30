@@ -9,11 +9,32 @@ interface TodoItemProps {
   todo: Todo;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
+  isSelectionMode?: boolean;
+  isSelected?: boolean;
+  onSelect?: (id: string) => void;
 }
 
-export function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
+export function TodoItem({
+  todo,
+  onToggle,
+  onDelete,
+  isSelectionMode,
+  isSelected,
+  onSelect,
+}: TodoItemProps) {
   return (
-    <div className="flex items-center gap-3 p-3 bg-background border rounded-lg group">
+    <div className={cn(
+      "flex items-center gap-3 p-3 bg-background border rounded-lg group",
+      isSelected && "ring-2 ring-primary"
+    )}>
+      {isSelectionMode && (
+        <input
+          type="checkbox"
+          checked={isSelected}
+          onChange={() => onSelect?.(todo.id)}
+          className="h-4 w-4 rounded border-blue-500 text-blue-500 focus:ring-blue-500 cursor-pointer"
+        />
+      )}
       <input
         type="checkbox"
         checked={todo.completed}
