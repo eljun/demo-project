@@ -1,6 +1,6 @@
 # Responsive Design
 
-> **Status:** PLANNED
+> **Status:** COMPLETED
 > **Priority:** MEDIUM
 > **Type:** enhancement
 > **Version Impact:** patch

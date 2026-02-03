@@ -4,7 +4,6 @@
 
 | ID | Task | Priority | Task Doc | Created |
 |----|------|----------|----------|---------|
-| - | Responsive Design | MEDIUM | [responsive-design.md](docs/task/responsive-design.md) | Jan 30 |
 
 ## In Progress
 
@@ -26,6 +25,7 @@
 
 | Task | Priority | Task Doc | Completed |
 |------|----------|----------|-----------|
+| Responsive Design | MEDIUM | [responsive-design.md](docs/task/responsive-design.md) | Feb 3 |
 | Edit Todo | MEDIUM | [001-edit-todo.md](docs/task/001-edit-todo.md) | Feb 3 |
 | Bulk Actions | MEDIUM | [bulk-actions.md](docs/task/bulk-actions.md) | Jan 30 |
 
