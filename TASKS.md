@@ -4,7 +4,6 @@
 
 | Task | Priority | Task Doc | Created |
 |------|----------|----------|---------|
-| Bulk Actions | MEDIUM | [bulk-actions.md](docs/task/bulk-actions.md) | Jan 30 |
 | Responsive Design | MEDIUM | [responsive-design.md](docs/task/responsive-design.md) | Jan 30 |
 
 ## In Progress
@@ -27,6 +26,7 @@
 
 | Task | Priority | Task Doc | Completed |
 |------|----------|----------|-----------|
+| Bulk Actions | MEDIUM | [bulk-actions.md](docs/task/bulk-actions.md) | Jan 30 |
 
 ## Shipped
 

@@ -1,6 +1,6 @@
 # Bulk Actions for Todos
 
-> **Status:** PLANNED
+> **Status:** COMPLETED
 > **Priority:** MEDIUM
 > **Type:** feature
 > **Version Impact:** minor
