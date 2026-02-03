@@ -5,15 +5,27 @@ import { useRouter } from "next/navigation"
 import { LogOut } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 import { useTodos } from "@/hooks/use-todos"
+import { useSelection } from "@/hooks/use-selection"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AddTodoForm } from "@/components/add-todo-form"
 import { TodoList } from "@/components/todo-list"
+import { BulkActionBar } from "@/components/bulk-action-bar"
 
 export default function TodosPage() {
   const router = useRouter()
   const { user, isLoading: authLoading, logout } = useAuth()
-  const { todos, isLoaded, addTodo, deleteTodo, toggleTodo } = useTodos()
+  const { todos, isLoaded, addTodo, deleteTodo, toggleTodo, deleteMany, completeMany, incompleteMany } = useTodos()
+  const {
+    isSelectionMode,
+    selectedIds,
+    selectedCount,
+    toggleSelectionMode,
+    toggleSelected,
+    selectAll,
+    clearSelection,
+    exitSelectionMode,
+  } = useSelection()
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -58,10 +70,19 @@ export default function TodosPage() {
         </Card>
 
         <Card>
-          <CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-lg">
               Tasks ({todos.filter(t => !t.completed).length} remaining)
             </CardTitle>
+            {todos.length > 0 && (
+              <Button
+                variant={isSelectionMode ? "secondary" : "outline"}
+                size="sm"
+                onClick={toggleSelectionMode}
+              >
+                {isSelectionMode ? "Cancel" : "Select"}
+              </Button>
+            )}
           </CardHeader>
           <CardContent>
             {!isLoaded ? (
@@ -69,11 +90,37 @@ export default function TodosPage() {
                 Loading todos...
               </div>
             ) : (
-              <TodoList
-                todos={todos}
-                onToggle={toggleTodo}
-                onDelete={deleteTodo}
-              />
+              <>
+                {isSelectionMode && (
+                  <BulkActionBar
+                    selectedCount={selectedCount}
+                    totalCount={todos.length}
+                    onSelectAll={() => selectAll(todos.map(t => t.id))}
+                    onClearSelection={clearSelection}
+                    onDeleteSelected={() => {
+                      deleteMany(Array.from(selectedIds))
+                      exitSelectionMode()
+                    }}
+                    onCompleteSelected={() => {
+                      completeMany(Array.from(selectedIds))
+                      exitSelectionMode()
+                    }}
+                    onIncompleteSelected={() => {
+                      incompleteMany(Array.from(selectedIds))
+                      exitSelectionMode()
+                    }}
+                    onCancel={exitSelectionMode}
+                  />
+                )}
+                <TodoList
+                  todos={todos}
+                  onToggle={toggleTodo}
+                  onDelete={deleteTodo}
+                  isSelectionMode={isSelectionMode}
+                  selectedIds={selectedIds}
+                  onSelect={toggleSelected}
+                />
+              </>
             )}
           </CardContent>
         </Card>
