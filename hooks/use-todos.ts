@@ -45,11 +45,26 @@ export function useTodos() {
     )
   }
 
+  const editTodo = (id: string, newText: string) => {
+    const trimmedText = newText.trim()
+    if (!trimmedText) {
+      // Delete todo if text is empty
+      deleteTodo(id)
+      return
+    }
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, text: trimmedText } : todo
+      )
+    )
+  }
+
   return {
     todos,
     isLoaded,
     addTodo,
     deleteTodo,
     toggleTodo,
+    editTodo,
   }
 }
