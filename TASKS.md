@@ -37,6 +37,7 @@
 
 | Task | Priority | Task Doc | Completed |
 |------|----------|----------|-----------|
+| Bulk Actions | MEDIUM | [bulk-actions.md](docs/task/bulk-actions.md) | Jan 30 |
 
 ## Shipped
 
