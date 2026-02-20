@@ -1,6 +1,7 @@
 # Bulk Actions for Todos
 
-> **Status:** COMPLETED
+> **Status:** READY TO SHIP
+> **Completed:** Jan 30, 2026
 > **Priority:** MEDIUM
 > **Type:** feature
 > **Version Impact:** minor
