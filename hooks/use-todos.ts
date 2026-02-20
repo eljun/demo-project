@@ -45,22 +45,16 @@ export function useTodos() {
     )
   }
 
-  const deleteMany = (ids: string[]) => {
-    setTodos((prev) => prev.filter((todo) => !ids.includes(todo.id)))
-  }
-
-  const completeMany = (ids: string[]) => {
+  const editTodo = (id: string, newText: string) => {
+    const trimmedText = newText.trim()
+    if (!trimmedText) {
+      // Delete todo if text is empty
+      deleteTodo(id)
+      return
+    }
     setTodos((prev) =>
       prev.map((todo) =>
-        ids.includes(todo.id) ? { ...todo, completed: true } : todo
-      )
-    )
-  }
-
-  const incompleteMany = (ids: string[]) => {
-    setTodos((prev) =>
-      prev.map((todo) =>
-        ids.includes(todo.id) ? { ...todo, completed: false } : todo
+        todo.id === id ? { ...todo, text: trimmedText } : todo
       )
     )
   }
@@ -71,8 +65,6 @@ export function useTodos() {
     addTodo,
     deleteTodo,
     toggleTodo,
-    deleteMany,
-    completeMany,
-    incompleteMany,
+    editTodo,
   }
 }

@@ -1,13 +1,16 @@
 # Next.js Todo List App
 
-> **Status:** TESTING
+> **Status:** MERGED
 > **Priority:** HIGH
 > **Type:** feature
 > **Version Impact:** minor
 > **Created:** 2026-01-30
 > **Completed:** 2026-01-30
+> **Merged:** 2026-02-03
 > **Platform:** Web
 > **Automation:** manual
+> **PR:** [#1](https://github.com/eljun/demo-project/pull/1)
+> **Branch:** feature/nextjs-todo-app
 >
 > **Implementation Notes:** All "Must Have" requirements implemented. Project uses Tailwind CSS v4 with the new `@tailwindcss/postcss` plugin. Manually created shadcn/ui components instead of CLI installation due to v4 compatibility.
 

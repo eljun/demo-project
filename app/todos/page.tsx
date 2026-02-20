@@ -5,27 +5,15 @@ import { useRouter } from "next/navigation"
 import { LogOut } from "lucide-react"
 import { useAuth } from "@/hooks/use-auth"
 import { useTodos } from "@/hooks/use-todos"
-import { useSelection } from "@/hooks/use-selection"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AddTodoForm } from "@/components/add-todo-form"
 import { TodoList } from "@/components/todo-list"
-import { BulkActionBar } from "@/components/bulk-action-bar"
 
 export default function TodosPage() {
   const router = useRouter()
   const { user, isLoading: authLoading, logout } = useAuth()
-  const { todos, isLoaded, addTodo, deleteTodo, toggleTodo, deleteMany, completeMany, incompleteMany } = useTodos()
-  const {
-    isSelectionMode,
-    selectedIds,
-    selectedCount,
-    toggleSelectionMode,
-    toggleSelected,
-    selectAll,
-    clearSelection,
-    exitSelectionMode,
-  } = useSelection()
+  const { todos, isLoaded, addTodo, deleteTodo, toggleTodo, editTodo } = useTodos()
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -47,80 +35,50 @@ export default function TodosPage() {
   }
 
   return (
-    <div className="min-h-screen bg-muted/50 p-4">
-      <div className="max-w-2xl mx-auto space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold">My Todos</h1>
-            <p className="text-sm text-muted-foreground">{user.email}</p>
+    <div className="min-h-screen bg-muted/50">
+      <div className="max-w-2xl mx-auto px-4 py-6 sm:px-6 lg:px-8 space-y-4">
+        <header className="flex items-center justify-between">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-xl sm:text-2xl font-bold truncate">My Todos</h1>
+            <p className="text-xs sm:text-sm text-muted-foreground truncate">{user.email}</p>
           </div>
-          <Button variant="outline" onClick={handleLogout}>
-            <LogOut className="h-4 w-4 mr-2" />
-            Logout
+          <Button
+            variant="outline"
+            onClick={handleLogout}
+            className="h-10 sm:h-9 px-3 sm:px-4 ml-4 shrink-0"
+          >
+            <LogOut className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Logout</span>
           </Button>
-        </div>
+        </header>
 
         <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Add New Todo</CardTitle>
+          <CardHeader className="px-4 sm:px-6">
+            <CardTitle className="text-base sm:text-lg">Add New Todo</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-4 sm:px-6">
             <AddTodoForm onAdd={addTodo} />
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-lg">
+          <CardHeader className="px-4 sm:px-6">
+            <CardTitle className="text-base sm:text-lg">
               Tasks ({todos.filter(t => !t.completed).length} remaining)
             </CardTitle>
-            {todos.length > 0 && (
-              <Button
-                variant={isSelectionMode ? "secondary" : "outline"}
-                size="sm"
-                onClick={toggleSelectionMode}
-              >
-                {isSelectionMode ? "Cancel" : "Select"}
-              </Button>
-            )}
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-4 sm:px-6">
             {!isLoaded ? (
               <div className="text-center py-4 text-muted-foreground">
                 Loading todos...
               </div>
             ) : (
-              <>
-                {isSelectionMode && (
-                  <BulkActionBar
-                    selectedCount={selectedCount}
-                    totalCount={todos.length}
-                    onSelectAll={() => selectAll(todos.map(t => t.id))}
-                    onClearSelection={clearSelection}
-                    onDeleteSelected={() => {
-                      deleteMany(Array.from(selectedIds))
-                      exitSelectionMode()
-                    }}
-                    onCompleteSelected={() => {
-                      completeMany(Array.from(selectedIds))
-                      exitSelectionMode()
-                    }}
-                    onIncompleteSelected={() => {
-                      incompleteMany(Array.from(selectedIds))
-                      exitSelectionMode()
-                    }}
-                    onCancel={exitSelectionMode}
-                  />
-                )}
-                <TodoList
-                  todos={todos}
-                  onToggle={toggleTodo}
-                  onDelete={deleteTodo}
-                  isSelectionMode={isSelectionMode}
-                  selectedIds={selectedIds}
-                  onSelect={toggleSelected}
-                />
-              </>
+              <TodoList
+                todos={todos}
+                onToggle={toggleTodo}
+                onDelete={deleteTodo}
+                onEdit={editTodo}
+              />
             )}
           </CardContent>
         </Card>
